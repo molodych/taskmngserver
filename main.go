@@ -27,7 +27,7 @@ type Command struct {
 }
 
 func main() {
-	go func() { //Очищаем списки
+	/*go func() { //Очищаем списки
 		for {
 			ActualCommand = []Command{}
 			ActualClient = []string{}
@@ -35,7 +35,7 @@ func main() {
 			fmt.Println("Списки очистились")
 			time.Sleep(time.Second * 15)
 		}
-	}()
+	}()*/
 
 	e := echo.New()
 
