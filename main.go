@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/labstack/echo/v4"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -27,7 +28,7 @@ type Command struct {
 }
 
 func main() {
-	/*go func() { //Очищаем списки
+	go func() { //Очищаем списки
 		for {
 			ActualCommand = []Command{}
 			ActualClient = []string{}
@@ -35,7 +36,7 @@ func main() {
 			fmt.Println("Списки очистились")
 			time.Sleep(time.Second * 15)
 		}
-	}()*/
+	}()
 
 	e := echo.New()
 
@@ -49,7 +50,9 @@ func main() {
 	e.POST("/Screenshot/", postScreenshot)
 	e.POST("/Stream/", postClientIP)
 
-	e.Logger.Fatal(e.Start(""))
+	port := ":" + os.Getenv("PORT")
+
+	e.Logger.Fatal(e.Start(port))
 }
 
 func getActualCommand(c echo.Context) error {
