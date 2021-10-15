@@ -12,7 +12,7 @@ import (
 var (
 	ActualCommand    []Command
 	ActualClient     []string
-	ActualScreenshot = bytes.Buffer{}
+	ActualScreenshot bytes.Buffer
 	ActualClientIp   string
 )
 
@@ -65,7 +65,7 @@ func getActiveClients(c echo.Context) error {
 	time.Sleep(time.Second * 2)
 	var actualClients string
 	for _, val := range ActualClient {
-		actualClients += val + ""
+		actualClients += val + "\n"
 	}
 	return c.String(http.StatusOK, actualClients)
 }
